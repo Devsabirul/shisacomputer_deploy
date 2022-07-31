@@ -1,7 +1,7 @@
 {% extends "dashbase/dashbase.html" %}
 {% load static %}
 {% block title %} SHISA CTA - Dashboard {% endblock title %}
-{% comment %} {% block prifile %} {{name}} {% endblock prifile %} {% endcomment %}
+{% block name %} {{name}} {% endblock name %}
 {% block body %}
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -126,8 +126,7 @@
                             <td>{{student.email}}</td>
                             <td>{{student.phoneNumber}}</td>
                             <td>{{student.courses}}</td>
-                            <td> <a href="{{student.certificate}}" target="blank"
-                                    download="{{student.certificate}}">Download</a> </td>
+                            <td> <a href="{{student.certificate.url}}" target="blank">Download</a> </td>
                         </tr>
                         {% endfor %}
                     </tbody>
