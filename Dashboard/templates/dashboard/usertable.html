@@ -44,9 +44,9 @@
 
                                 </td>
                                 <td>
-                                    <form action="" method="POST" class="d-inline">
+                                    <form action="user_delete" method="POST" class="d-inline">
                                         {% csrf_token %}
-                                        <input type="hidden" name="id" value={{student.id}}>
+                                        <input type="hidden" name="id" value={{user.id}}>
                                         <button type="submit" class="btn_">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>

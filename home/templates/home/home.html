@@ -409,24 +409,24 @@
         </div>
         <div class="row">
             {% for teacher in teacher %}
-            <div class="col-md-6 col-lg-3 text-center team mb-4">
-                <div class="team-item rounded  mb-2">
-                    <div class="team-img position-relative overflow-hidden">
-                        <img class="img-fluid" src="{{teacher.photo.url}}" alt="">
-                        <div class="team-social">
-                            <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-square mx-1" href="{{teacher.facebook}}"
-                                target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-square mx-1" href="#"><i
-                                    class="fab fa-linkedin-in"></i></a>
+                <div class="col-md-6 col-lg-3 text-center team mb-4">
+                    <div class="team-item rounded  mb-2">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="{{teacher.photo.url}}" alt="">
+                            <div class="team-social">
+                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" href="{{teacher.facebook}}"
+                                    target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="bg-secondary p-4">
+                            <h5>{{teacher.name}}</h5>
+                            <p class="m-0">{{teacher.skill}}</p>
                         </div>
                     </div>
-                    <div class="bg-secondary p-4">
-                        <h5>{{teacher.name}}</h5>
-                        <p class="m-0">{{teacher.skill}}</p>
-                    </div>
-                </div>
-            </div>
+                </div>                
             {% endfor %}
         </div>
     </div>

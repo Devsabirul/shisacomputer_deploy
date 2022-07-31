@@ -12,9 +12,11 @@ def dashboard(request):
     if request.user.is_authenticated:
         db = StudentInfo.objects.all()
         user = User.objects.all()
+        teacher = Teachers_info.objects.all()
         l = len(db)
         userLength = len(user)
-        return render(request, 'dashboard/index.html', {'studentinfo': db, 'lenght': l, 'name': request.user, 'userLength': userLength})
+        teacherLength = len(teacher)
+        return render(request, 'dashboard/index.html', {'studentinfo': db, 'lenght': l, 'name': request.user, 'userLength': userLength, 'teacherLength': teacherLength})
     else:
         return redirect('login')
 
@@ -65,6 +67,14 @@ def edit_student(request, id):
 def user(request):
     user = User.objects.all()
     return render(request, 'dashboard/usertable.html', {'user': user})
+
+
+def user_delete(request):
+    data = request.POST
+    id = data.get('id')
+    user = User.objects.get(id=id)
+    user.delete()
+    return redirect('/dashboard/user')
 
 
 # teacher info
