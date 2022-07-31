@@ -137,11 +137,18 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
+            <!-- Nav Item - User -->
             <li class="nav-item">
                 <a class="nav-link" href="user">
                     <i class="fa-solid fa-user"></i>
                     <span>Users</span></a>
+            </li>
+
+            <!-- Nav Item - Teachers -->
+            <li class="nav-item">
+                <a class="nav-link" href="teacher_table">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Teachers</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
@@ -304,7 +311,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {% block name %}{% endblock name %} </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    {% block name %}
+                                    {% endblock name %} </span>
                                 <img class="img-profile rounded-circle" src="{% static 'img/undraw_profile.svg' %}">
                             </a>
                             <!-- Dropdown - User Information -->

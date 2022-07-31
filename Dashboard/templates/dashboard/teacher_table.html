@@ -1,0 +1,56 @@
+{% extends "dashbase/dashbase.html" %}
+{% load static %}
+{% block title %}Student Info - Dashboard{% endblock title %}
+{% block body %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Teachers Infomation</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Skills</th>
+                            <th>Facebook</th>
+                            <th>photo</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for teacher in teacher %}
+                        <tr>
+                            <td> {{forloop.counter}} </td>
+                            <td>{{teacher.name}}</td>
+                            <td>{{teacher.skill}}</td>
+                            <td>{{teacher.facebook}}</td>
+                            <td class="photo_">
+                                <img widht="20%" src="{{teacher.photo.url}}" alt="{{teacher.name}}">
+                            </td>
+                            <td>
+                                <form action="{% url 'teacher_delete' %}" method="POST" class="d-inline">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id" value="{{teacher.id}}">
+                                    <button type="submit" class="btn_">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
+{% endblock body %}

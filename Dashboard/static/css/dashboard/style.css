@@ -32,3 +32,7 @@ p.error_ {
     color: red;
     font-size: 15px;
 }
+
+td.photo_ img {
+    width: 20%;
+}
