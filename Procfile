@@ -1,0 +1,1 @@
+web: gunicorn shisacomputer.wsgi --log-file -

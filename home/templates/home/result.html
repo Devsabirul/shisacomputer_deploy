@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %} CERTIFICATE - Online Course{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="heading_ mt-5 text-center">
+        <h3> Your Certificate Details </h3>
+        <hr>
+    </div>
+    {% if result|length < 1 %} <div class="container">
+        <div class="serarch_error">
+            <p>Your search -</p>
+            <p><b> {{query}} </b></p>
+            <p>- did not match any documents.</p>
+            <p>Suggestions:</p>
+            <ul>
+                <li>Make sure that all words are spelled correctly.</li>
+                <li>Try different keywords</li>
+                <li>Try more general keywords.</li>
+            </ul>
+        </div>
+</div>
+{% endif %}
+{% for result in result %}
+<div class="row">
+    <div class="col-lg-12">
+        <h1>{{result.name}} </h1>
+        <p>Registration Number : {{result.registration}} </p>
+        <p>Phone Number : {{result.phoneNumber}} </p>
+        <p>Email : {{result.email}}</p>
+        <p>Course Name : {{result.courses}} </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="certificate">
+            <img src="{{result.certificate}}" alt="Image">
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock body %}

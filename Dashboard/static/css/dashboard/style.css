@@ -1,0 +1,34 @@
+button.btn_ {
+    padding: 0;
+    margin: 0;
+    border: none;
+    color: red;
+    margin-left: 15px;
+    background: transparent;
+}
+
+a.updt_btn_ {
+    text-decoration: none;
+}
+
+.color_ {
+    color: #496FDB;
+}
+
+span.helptext {
+    color: red;
+    font-size: 13px;
+    display: none;
+}
+
+ul.errorlist li {
+    color: red;
+    list-style-type: none;
+    margin-left: -40px;
+    font-weight: 500;
+}
+
+p.error_ {
+    color: red;
+    font-size: 15px;
+}

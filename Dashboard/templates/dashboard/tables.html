@@ -1,0 +1,71 @@
+{% extends "dashbase/dashbase.html" %}
+{% load static %}
+{% block title %}Student Info - Dashboard{% endblock title %}
+{% block body %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Data Base Student Table</h1>
+    <p class="mb-4">SHISA Computer Training Academy Database for Student info. View Name , certificate, Registration
+        no,phone number, course Details. Developed by <a href="https://www.facebook.com/shishirislam80">SHISA it
+            company</a></p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Student Infomation</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Courses</th>
+                            <th>Certificate</th>
+                            <th>E/D</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in studentinfo %}
+                        <tr>
+                            <td> {{student.registration}} </td>
+                            <td>{{student.name}}</td>
+                            <td>{{student.email}}</td>
+                            <td>{{student.phoneNumber}}</td>
+                            <td>{{student.courses}}</td>
+                            <td>
+                                <a href="{{student.certificate}}" target="blank"
+                                    download="{{student.certificate}}">Download</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'edit_student' student.id %}" class="updt_btn_">
+                                    <i class="fa-solid fa-pen-to-square color_"></i>
+                                </a>
+                                <form action="{% url 'delete_data' %}" method="POST" class="d-inline">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id" value={{student.id}}>
+                                    <button type="submit" class="btn_">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
+{% endblock body %}

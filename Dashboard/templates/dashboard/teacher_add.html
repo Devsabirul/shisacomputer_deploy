@@ -1,0 +1,18 @@
+{% extends "dashbase/dashbase.html" %}
+{% block title %}Teachers Added{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="heading mb-3">
+        <h1>Add Teachers Information.</h1>
+    </div>
+    <hr>
+    <div class="wrapp mt-3">
+        <form class="w-50 m-auto" action="teacher_add" method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+                {{form}}
+            <button type="submit" class="btn btn-primary mt-2">Added</button>
+        </form>
+
+    </div>
+</div>
+{% endblock body %}
