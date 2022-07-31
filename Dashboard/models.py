@@ -9,9 +9,7 @@ class StudentInfo(models.Model):
     email = models.EmailField(max_length=100)
     phoneNumber = models.CharField(max_length=20)
     courses = models.CharField(max_length=200)
-    certificate = models.ImageField(upload_to="media/img")
+    certificate = models.ImageField(upload_to="images/")
 
     def __str__(self):
         return self.name
-
-
