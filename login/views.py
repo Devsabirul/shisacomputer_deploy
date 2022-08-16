@@ -1,4 +1,3 @@
-import django
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from login.forms import SingUpForm, HandelLoginForm

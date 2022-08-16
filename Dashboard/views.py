@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import redirect, render
 from .forms import *
 from .models import *
@@ -22,20 +23,25 @@ def dashboard(request):
 
 
 def addstudent(request):
-    if request.method == "POST":
-        form = Studentform(request.POST, request.FILES)
-        if form.is_valid:
-            form.save()
-    form = Studentform()
-    return render(request, 'dashboard/addstudent.html', {
-        'form': form
-    })
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            form = Studentform(request.POST, request.FILES)
+            if form.is_valid:
+                form.save()
+        form = Studentform()
+        return render(request, 'dashboard/addstudent.html', {
+            'form': form
+        })
+    else:
+        return redirect("/login")
 
 
 def student_info(request):
-    db = StudentInfo.objects.all()
-    return render(request, 'dashboard/tables.html', {'studentinfo': db})
-
+    if request.user.is_authenticated:
+        db = StudentInfo.objects.all()
+        return render(request, 'dashboard/tables.html', {'studentinfo': db})
+    else:
+        return redirect("/login")
 # This function will Delete from database
 
 
@@ -50,23 +56,29 @@ def delete_data(request):
 # this function for update sutndent data
 
 def edit_student(request, id):
-    if request.method == "POST":
-        stueditdata = StudentInfo.objects.get(id=id)
-        fm = Studentform(request.POST, instance=stueditdata)
-        if fm.is_valid():
-            fm.save()
-            return redirect('/dashboard/')
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            stueditdata = StudentInfo.objects.get(id=id)
+            fm = Studentform(request.POST, instance=stueditdata)
+            if fm.is_valid():
+                fm.save()
+                return redirect('/dashboard/')
+        else:
+            stueditdata = StudentInfo.objects.get(id=id)
+            fm = Studentform(instance=stueditdata)
+        return render(request, 'dashboard/editstudent.html', {'form': fm})
     else:
-        stueditdata = StudentInfo.objects.get(id=id)
-        fm = Studentform(instance=stueditdata)
-    return render(request, 'dashboard/editstudent.html', {'form': fm})
+        return redirect("/login")
 
 # user information
 
 
 def user(request):
-    user = User.objects.all()
-    return render(request, 'dashboard/usertable.html', {'user': user})
+    if request.user.is_authenticated:
+        user = User.objects.all()
+        return render(request, 'dashboard/usertable.html', {'user': user})
+    else:
+        return redirect("/login")
 
 
 def user_delete(request):
@@ -81,8 +93,11 @@ def user_delete(request):
 
 
 def teacher_info(request):
-    teacher = Teachers_info.objects.all()
-    return render(request, 'dashboard/teacher_table.html', {'teacher': teacher})
+    if request.user.is_authenticated:
+        teacher = Teachers_info.objects.all()
+        return render(request, 'dashboard/teacher_table.html', {'teacher': teacher})
+    else:
+        return redirect('/login')
 
 
 def teacher_delete(request):
